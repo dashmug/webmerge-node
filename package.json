@@ -1,0 +1,31 @@
+{
+  "name": "webmerge",
+  "version": "0.0.1",
+  "description": "Library for accessing WebMerge (https://webmerge.me/) API",
+  "license": "MIT",
+  "repository": "dashmug/webmerge",
+  "author": {
+    "name": "Noel Martin Llevares",
+    "email": "noelmartin@gmail.com"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "keywords": [
+    "webmerge"
+  ],
+  "dependencies": {
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jest": "^20.0.0",
+    "jest": "^20.0.0"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest --coverage"
+  }
+}
