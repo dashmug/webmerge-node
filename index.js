@@ -20,6 +20,40 @@ class WebMergeAPI {
     });
   }
 
+  mergeDocument(id, key, data, test, download, callback) {
+    return this.client.post({
+      url: `${WEB_MERGE_BASE_URL}/merge/${id}/${key}`,
+      qs: {
+        test: test ? 1 : 0,
+        download: download ? 1 : 0,
+      },
+      body: data,
+    }, (err, response, body) => {
+      if (err) return callback(err);
+      return callback(null, body);
+    });
+  }
+
+  createDocument(data, callback) {
+    return this.client.post({
+      url: `${API_ENDPOINT}/documents`,
+      body: data,
+    }, (err, response, body) => {
+      if (err) return callback(err);
+      return callback(null, body);
+    });
+  }
+
+  updateDocument(id, data, callback) {
+    return this.client.put({
+      url: `${API_ENDPOINT}/documents/${id}`,
+      body: data,
+    }, (err, response, body) => {
+      if (err) return callback(err);
+      return callback(null, body);
+    });
+  }
+
   getDocuments(opts, callback) {
     return this.client.get({
       url: `${API_ENDPOINT}/documents`,
