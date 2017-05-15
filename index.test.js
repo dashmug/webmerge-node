@@ -8,7 +8,7 @@ const WebMergeAPI = require('.');
 
 describe('WebMergeAPI', () => {
   describe('new WebMergeAPI()', () => {
-    it('returns a request client with default config', () => {
+    it('returns an object with a request client with default config', () => {
       const api = new WebMergeAPI('hello', 'world');
 
       expect(request.defaults.mock.calls[0]).toEqual([{
