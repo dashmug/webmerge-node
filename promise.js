@@ -12,17 +12,35 @@ function promiseFromCallback(fn) {
   });
 }
 
+
+function promisify(fn, ...args) {
+  return promiseFromCallback(cb => fn(...args, cb));
+}
+
+
 class WebMergePromiseAPI extends WebMergeAPI {
-  getDocuments(opts) {
-    return promiseFromCallback(cb => super.getDocuments(opts, cb));
+  mergeDocument(...args) {
+    return promisify(super.mergeDocument, ...args);
   }
 
-  getDocument(id) {
-    return promiseFromCallback(cb => super.getDocument(id, cb));
+  createDocument(...args) {
+    return promisify(super.createDocument, ...args);
   }
 
-  getDocumentFields(id) {
-    return promiseFromCallback(cb => super.getDocumentFields(id, cb));
+  updateDocument(...args) {
+    return promisify(super.updateDocument, ...args);
+  }
+
+  getDocuments(...args) {
+    return promisify(super.getDocuments, ...args);
+  }
+
+  getDocument(...args) {
+    return promisify(super.getDocument, ...args);
+  }
+
+  getDocumentFields(...args) {
+    return promisify(super.getDocumentFields, ...args);
   }
 }
 
