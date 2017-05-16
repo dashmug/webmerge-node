@@ -50,4 +50,34 @@ describe('WebMergePromiseAPI', () => {
       });
     });
   });
+
+  describe('createDocument()', () => {
+    it('creates a new document', () => {
+      const api = new WebMergePromiseAPI('hello', 'world');
+
+      api.createDocument({}).then(() => {
+        expect(api.client.post).toBeCalled();
+      });
+    });
+  });
+
+  describe('updateDocument()', () => {
+    it('updates an existing document', () => {
+      const api = new WebMergePromiseAPI('hello', 'world');
+
+      api.updateDocument(1, {}).then(() => {
+        expect(api.client.put).toBeCalled();
+      });
+    });
+  });
+
+  describe('mergeDocument()', () => {
+    it('merges an existing document', () => {
+      const api = new WebMergePromiseAPI('hello', 'world');
+
+      api.mergeDocument(1, 'key', {}, true, true).then(() => {
+        expect(api.client.post).toBeCalled();
+      });
+    });
+  });
 });
