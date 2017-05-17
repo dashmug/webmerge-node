@@ -33,7 +33,8 @@
   "jest": {
     "coverageReporters": [
       "text",
-      "html"
+      "html",
+      "lcov"
     ]
   }
 }
