@@ -29,5 +29,11 @@
     "coveralls": "npm run test && cat ./coverage/lcov.info | coveralls",
     "lint": "eslint .",
     "test": "jest --coverage"
+  },
+  "jest": {
+    "coverageReporters": [
+      "text",
+      "html"
+    ]
   }
 }
