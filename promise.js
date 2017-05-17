@@ -3,19 +3,14 @@
 const WebMergeAPI = require('.');
 
 
-function promiseFromCallback(fn) {
-  return new Promise((resolve, reject) => {
-    fn((err, response) => {
-      if (err) return reject(err);
-      return resolve(response);
-    });
+const promiseFromCallback = fn => new Promise((resolve, reject) => {
+  fn((err, response) => {
+    if (err) return reject(err);
+    return resolve(response);
   });
-}
+});
 
-
-function promisify(fn, ...args) {
-  return promiseFromCallback(cb => fn(...args, cb));
-}
+const promisify = (fn, ...args) => promiseFromCallback(cb => fn(...args, cb));
 
 
 class WebMergePromiseAPI extends WebMergeAPI {
