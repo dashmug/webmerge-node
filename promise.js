@@ -10,8 +10,6 @@ const promiseFromCallback = fn => new Promise((resolve, reject) => {
   });
 });
 
-const promisify = (fn, ...args) => promiseFromCallback(cb => fn(...args, cb));
-
 
 class WebMergePromiseAPI extends WebMergeAPI {
   mergeDocument(...args) {
