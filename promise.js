@@ -15,27 +15,27 @@ const promisify = (fn, ...args) => promiseFromCallback(cb => fn(...args, cb));
 
 class WebMergePromiseAPI extends WebMergeAPI {
   mergeDocument(...args) {
-    return promisify(super.mergeDocument, ...args);
+    return promiseFromCallback(cb => super.mergeDocument(...args, cb));
   }
 
   createDocument(...args) {
-    return promisify(super.createDocument, ...args);
+    return promiseFromCallback(cb => super.createDocument(...args, cb));
   }
 
   updateDocument(...args) {
-    return promisify(super.updateDocument, ...args);
+    return promiseFromCallback(cb => super.updateDocument(...args, cb));
   }
 
   getDocuments(...args) {
-    return promisify(super.getDocuments, ...args);
+    return promiseFromCallback(cb => super.getDocuments(...args, cb));
   }
 
   getDocument(...args) {
-    return promisify(super.getDocument, ...args);
+    return promiseFromCallback(cb => super.getDocument(...args, cb));
   }
 
   getDocumentFields(...args) {
-    return promisify(super.getDocumentFields, ...args);
+    return promiseFromCallback(cb => super.getDocumentFields(...args, cb));
   }
 }
 
