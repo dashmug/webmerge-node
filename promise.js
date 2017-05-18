@@ -12,18 +12,6 @@ const promiseFromCallback = fn => new Promise((resolve, reject) => {
 
 
 class WebMergePromiseAPI extends WebMergeAPI {
-  mergeDocument(...args) {
-    return promiseFromCallback(cb => super.mergeDocument(...args, cb));
-  }
-
-  createDocument(...args) {
-    return promiseFromCallback(cb => super.createDocument(...args, cb));
-  }
-
-  updateDocument(...args) {
-    return promiseFromCallback(cb => super.updateDocument(...args, cb));
-  }
-
   getDocuments(...args) {
     return promiseFromCallback(cb => super.getDocuments(...args, cb));
   }
@@ -34,6 +22,30 @@ class WebMergePromiseAPI extends WebMergeAPI {
 
   getDocumentFields(...args) {
     return promiseFromCallback(cb => super.getDocumentFields(...args, cb));
+  }
+
+  getDocumentFile(...args) {
+    return promiseFromCallback(cb => super.getDocumentFile(...args, cb));
+  }
+
+  createDocument(...args) {
+    return promiseFromCallback(cb => super.createDocument(...args, cb));
+  }
+
+  updateDocument(...args) {
+    return promiseFromCallback(cb => super.updateDocument(...args, cb));
+  }
+
+  mergeDocument(...args) {
+    return promiseFromCallback(cb => super.mergeDocument(...args, cb));
+  }
+
+  copyDocument(...args) {
+    return promiseFromCallback(cb => super.copyDocument(...args, cb));
+  }
+
+  deleteDocument(...args) {
+    return promiseFromCallback(cb => super.deleteDocument(...args, cb));
   }
 }
 
