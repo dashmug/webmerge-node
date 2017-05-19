@@ -28,6 +28,7 @@
   "scripts": {
     "coveralls": "npm run test && cat ./coverage/lcov.info | coveralls",
     "lint": "eslint .",
+    "precommit": "npm run lint && npm run test",
     "test": "jest --coverage"
   },
   "jest": {
