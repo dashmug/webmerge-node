@@ -1,6 +1,6 @@
 {
   "name": "webmerge",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Library for accessing WebMerge (https://webmerge.me/) API",
   "license": "MIT",
   "repository": "dashmug/webmerge-node",
