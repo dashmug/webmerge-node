@@ -4,7 +4,9 @@ const request = require('request');
 
 
 const WEB_MERGE_BASE_URL = 'https://www.webmerge.me';
-const API_ENDPOINT = '/api';
+const API_ENDPOINT = '/api/documents';
+const MERGE_ENDPOINT = '/merge';
+const ROUTE_ENDPOINT = '/route';
 
 
 class WebMergeAPI {
@@ -22,7 +24,7 @@ class WebMergeAPI {
 
   getDocuments(opts, callback) {
     return this.client.get({
-      url: `${API_ENDPOINT}/documents`,
+      url: `${API_ENDPOINT}`,
     }, (err, response, body) => {
       if (err) return callback(err);
       return callback(null, body);
@@ -31,7 +33,7 @@ class WebMergeAPI {
 
   getDocument(id, callback) {
     return this.client.get({
-      url: `${API_ENDPOINT}/documents/${id}`,
+      url: `${API_ENDPOINT}/${id}`,
     }, (err, response, body) => {
       if (err) return callback(err);
       return callback(null, body);
@@ -40,16 +42,16 @@ class WebMergeAPI {
 
   getDocumentFields(id, callback) {
     return this.client.get({
-      url: `${API_ENDPOINT}/documents/${id}/fields`,
+      url: `${API_ENDPOINT}/${id}/fields`,
     }, (err, response, body) => {
       if (err) return callback(err);
       return callback(null, body);
     });
   }
 
-  getDocumentFile(id, callback) {
+  getDocumentFiles(id, callback) {
     return this.client.get({
-      url: `${API_ENDPOINT}/documents/${id}/file`,
+      url: `${API_ENDPOINT}/${id}/file`,
     }, (err, response, body) => {
       if (err) return callback(err);
       return callback(null, body);
@@ -58,7 +60,7 @@ class WebMergeAPI {
 
   createDocument(data, callback) {
     return this.client.post({
-      url: `${API_ENDPOINT}/documents`,
+      url: `${API_ENDPOINT}`,
       body: data,
     }, (err, response, body) => {
       if (err) return callback(err);
@@ -68,7 +70,7 @@ class WebMergeAPI {
 
   updateDocument(id, data, callback) {
     return this.client.put({
-      url: `${API_ENDPOINT}/documents/${id}`,
+      url: `${API_ENDPOINT}/${id}`,
       body: data,
     }, (err, response, body) => {
       if (err) return callback(err);
@@ -76,12 +78,12 @@ class WebMergeAPI {
     });
   }
 
-  mergeDocument(id, key, data, test, download, callback) {
+  mergeDocument(id, key, data, isTestMode, downloadFile, callback) {
     return this.client.post({
-      url: `${WEB_MERGE_BASE_URL}/merge/${id}/${key}`,
+      url: `${MERGE_ENDPOINT}/${id}/${key}`,
       qs: {
-        test: test ? 1 : 0,
-        download: download ? 1 : 0,
+        test: isTestMode ? 1 : 0,
+        download: downloadFile ? 1 : 0,
       },
       body: data,
     }, (err, response, body) => {
@@ -92,7 +94,7 @@ class WebMergeAPI {
 
   copyDocument(id, data, callback) {
     return this.client.post({
-      url: `${API_ENDPOINT}/documents/${id}/copy`,
+      url: `${API_ENDPOINT}/${id}/copy`,
       body: data,
     }, (err, response, body) => {
       if (err) return callback(err);
@@ -102,7 +104,86 @@ class WebMergeAPI {
 
   deleteDocument(id, callback) {
     return this.client.delete({
-      url: `${API_ENDPOINT}/documents/${id}`,
+      url: `${API_ENDPOINT}/${id}`,
+    }, (err, response, body) => {
+      if (err) return callback(err);
+      return callback(null, body);
+    });
+  }
+
+  getDataRoutes(callback) {
+    return this.client.get({
+      url: `${ROUTE_ENDPOINT}`,
+    }, (err, response, body) => {
+      if (err) return callback(err);
+      return callback(null, body);
+    });
+  }
+
+  getDataRoute(id, callback) {
+    return this.client.get({
+      url: `${ROUTE_ENDPOINT}/${id}`,
+    }, (err, response, body) => {
+      if (err) return callback(err);
+      return callback(null, body);
+    });
+  }
+
+  getDataRouteFields(id, callback) {
+    return this.client.get({
+      url: `${ROUTE_ENDPOINT}/${id}/fields`,
+    }, (err, response, body) => {
+      if (err) return callback(err);
+      return callback(null, body);
+    });
+  }
+
+  getDataRouteRules(id, callback) {
+    return this.client.get({
+      url: `${ROUTE_ENDPOINT}/${id}/rules`,
+    }, (err, response, body) => {
+      if (err) return callback(err);
+      return callback(null, body);
+    });
+  }
+
+  mergeDataRoute(id, key, data, isTestMode, downloadFile, callback) {
+    return this.client.post({
+      url: `${ROUTE_ENDPOINT}/${id}/${key}`,
+      qs: {
+        test: isTestMode ? 1 : 0,
+        download: downloadFile ? 1 : 0,
+      },
+      body: data,
+    }, (err, response, body) => {
+      if (err) return callback(err);
+      return callback(null, body);
+    });
+  }
+
+  createDataRoute(data, callback) {
+    return this.client.post({
+      url: `${ROUTE_ENDPOINT}`,
+      body: data,
+    }, (err, response, body) => {
+      if (err) return callback(err);
+      return callback(null, body);
+    });
+  }
+
+  updateDataRoute(id, data, callback) {
+    return this.client.put({
+      url: `${ROUTE_ENDPOINT}/${id}`,
+      body: data,
+    }, (err, response, body) => {
+      if (err) return callback(err);
+      return callback(null, body);
+    });
+  }
+
+  deleteDataRoute(id, callback) {
+    return this.client.delete({
+      url: `${ROUTE_ENDPOINT}/${id}`,
     }, (err, response, body) => {
       if (err) return callback(err);
       return callback(null, body);

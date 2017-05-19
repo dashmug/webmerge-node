@@ -24,8 +24,8 @@ class WebMergePromiseAPI extends WebMergeAPI {
     return promiseFromCallback(cb => super.getDocumentFields(...args, cb));
   }
 
-  getDocumentFile(...args) {
-    return promiseFromCallback(cb => super.getDocumentFile(...args, cb));
+  getDocumentFiles(...args) {
+    return promiseFromCallback(cb => super.getDocumentFiles(...args, cb));
   }
 
   createDocument(...args) {
@@ -46,6 +46,38 @@ class WebMergePromiseAPI extends WebMergeAPI {
 
   deleteDocument(...args) {
     return promiseFromCallback(cb => super.deleteDocument(...args, cb));
+  }
+
+  getDataRoutes(...args) {
+    return promiseFromCallback(cb => super.getDataRoutes(...args, cb));
+  }
+
+  getDataRoute(...args) {
+    return promiseFromCallback(cb => super.getDataRoute(...args, cb));
+  }
+
+  getDataRouteFields(...args) {
+    return promiseFromCallback(cb => super.getDataRouteFields(...args, cb));
+  }
+
+  getDataRouteRules(...args) {
+    return promiseFromCallback(cb => super.getDataRouteRules(...args, cb));
+  }
+
+  mergeDataRoute(...args) {
+    return promiseFromCallback(cb => super.mergeDataRoute(...args, cb));
+  }
+
+  createDataRoute(...args) {
+    return promiseFromCallback(cb => super.createDataRoute(...args, cb));
+  }
+
+  updateDataRoute(...args) {
+    return promiseFromCallback(cb => super.updateDataRoute(...args, cb));
+  }
+
+  deleteDataRoute(...args) {
+    return promiseFromCallback(cb => super.deleteDataRoute(...args, cb));
   }
 }
 
