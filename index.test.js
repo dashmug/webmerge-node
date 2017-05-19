@@ -3,28 +3,29 @@
 jest.mock('request');
 
 const request = require('request');
-const WebMergeAPI = require('.');
+const WebMergePromiseAPI = require('.').WebMergePromiseAPI;
 
 
-describe('WebMergeAPI', () => {
-  describe('new WebMergeAPI()', () => {
+describe('WebMergePromiseAPI', () => {
+  describe('new WebMergePromiseAPI()', () => {
     it('returns an object with a request client with default config', () => {
-      const api = new WebMergeAPI('hello', 'world');
+      const api = new WebMergePromiseAPI('key', 'secret');
 
       expect(request.defaults.mock.calls[0]).toEqual([{
         baseUrl: 'https://www.webmerge.me',
-        auth: { username: 'hello', password: 'world', sendImmediately: true },
+        auth: { username: 'key', password: 'secret', sendImmediately: true },
         json: true,
       }]);
+      expect(request.get).not.toBeCalled();
       expect(api.client.get).not.toBeCalled();
     });
   });
 
   describe('getDocuments()', () => {
     it('retrieves a list of documents', () => {
-      const api = new WebMergeAPI('hello', 'world');
+      const api = new WebMergePromiseAPI('key', 'secret');
 
-      api.getDocuments(null, () => {
+      api.getDocuments(null).then(() => {
         expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/api/documents' });
       });
     });
@@ -32,9 +33,9 @@ describe('WebMergeAPI', () => {
 
   describe('getDocument()', () => {
     it('retrieves a single document', () => {
-      const api = new WebMergeAPI('hello', 'world');
+      const api = new WebMergePromiseAPI('key', 'secret');
 
-      api.getDocument(1, () => {
+      api.getDocument(1).then(() => {
         expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/api/documents/1' });
       });
     });
@@ -42,9 +43,9 @@ describe('WebMergeAPI', () => {
 
   describe('getDocumentFields()', () => {
     it('retrieves document fields for a single document', () => {
-      const api = new WebMergeAPI('hello', 'world');
+      const api = new WebMergePromiseAPI('key', 'secret');
 
-      api.getDocumentFields(1, () => {
+      api.getDocumentFields(1).then(() => {
         expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/api/documents/1/fields' });
       });
     });
@@ -52,9 +53,9 @@ describe('WebMergeAPI', () => {
 
   describe('createDocument()', () => {
     it('creates a new document', () => {
-      const api = new WebMergeAPI('hello', 'world');
+      const api = new WebMergePromiseAPI('key', 'secret');
 
-      api.createDocument({}, () => {
+      api.createDocument({}).then(() => {
         expect(api.client.post).toBeCalled();
       });
     });
@@ -62,9 +63,9 @@ describe('WebMergeAPI', () => {
 
   describe('updateDocument()', () => {
     it('updates an existing document', () => {
-      const api = new WebMergeAPI('hello', 'world');
+      const api = new WebMergePromiseAPI('key', 'secret');
 
-      api.updateDocument(1, {}, () => {
+      api.updateDocument(1, {}).then(() => {
         expect(api.client.put).toBeCalled();
       });
     });
@@ -72,9 +73,9 @@ describe('WebMergeAPI', () => {
 
   describe('mergeDocument()', () => {
     it('merges an existing document', () => {
-      const api = new WebMergeAPI('hello', 'world');
+      const api = new WebMergePromiseAPI('key', 'secret');
 
-      api.mergeDocument(1, 'key', {}, true, true, () => {
+      api.mergeDocument(1, 'key', {}, true, true).then(() => {
         expect(api.client.post).toBeCalled();
       });
     });
