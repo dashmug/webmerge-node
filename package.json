@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Library for accessing WebMerge (https://webmerge.me/) API",
   "license": "MIT",
-  "repository": "dashmug/webmerge",
+  "repository": "dashmug/webmerge-node",
   "author": {
     "name": "Noel Martin Llevares",
     "email": "noelmartin@gmail.com"
