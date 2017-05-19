@@ -22,7 +22,7 @@ class WebMergeAPI {
     });
   }
 
-  getDocuments(opts, callback) {
+  getDocuments(options, callback) {
     return this.client.get({
       url: `${API_ENDPOINT}`,
     }, (err, response, body) => {

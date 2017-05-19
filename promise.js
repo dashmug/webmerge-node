@@ -12,72 +12,72 @@ const promiseFromCallback = fn => new Promise((resolve, reject) => {
 
 
 class WebMergePromiseAPI extends WebMergeAPI {
-  getDocuments(...args) {
-    return promiseFromCallback(cb => super.getDocuments(...args, cb));
+  getDocuments(options) {
+    return promiseFromCallback(cb => super.getDocuments(options, cb));
   }
 
-  getDocument(...args) {
-    return promiseFromCallback(cb => super.getDocument(...args, cb));
+  getDocument(id) {
+    return promiseFromCallback(cb => super.getDocument(id, cb));
   }
 
-  getDocumentFields(...args) {
-    return promiseFromCallback(cb => super.getDocumentFields(...args, cb));
+  getDocumentFields(id) {
+    return promiseFromCallback(cb => super.getDocumentFields(id, cb));
   }
 
-  getDocumentFiles(...args) {
-    return promiseFromCallback(cb => super.getDocumentFiles(...args, cb));
+  getDocumentFiles(id) {
+    return promiseFromCallback(cb => super.getDocumentFiles(id, cb));
   }
 
-  createDocument(...args) {
-    return promiseFromCallback(cb => super.createDocument(...args, cb));
+  createDocument(data) {
+    return promiseFromCallback(cb => super.createDocument(data, cb));
   }
 
-  updateDocument(...args) {
-    return promiseFromCallback(cb => super.updateDocument(...args, cb));
+  updateDocument(id, data) {
+    return promiseFromCallback(cb => super.updateDocument(id, data, cb));
   }
 
-  mergeDocument(...args) {
-    return promiseFromCallback(cb => super.mergeDocument(...args, cb));
+  mergeDocument(id, key, data, isTestMode, downloadFile) {
+    return promiseFromCallback(cb => super.mergeDocument(id, key, data, isTestMode, downloadFile, cb));
   }
 
-  copyDocument(...args) {
-    return promiseFromCallback(cb => super.copyDocument(...args, cb));
+  copyDocument(id, data) {
+    return promiseFromCallback(cb => super.copyDocument(id, data, cb));
   }
 
-  deleteDocument(...args) {
-    return promiseFromCallback(cb => super.deleteDocument(...args, cb));
+  deleteDocument(id) {
+    return promiseFromCallback(cb => super.deleteDocument(id, cb));
   }
 
-  getDataRoutes(...args) {
-    return promiseFromCallback(cb => super.getDataRoutes(...args, cb));
+  getDataRoutes(callback) {
+    return promiseFromCallback(cb => super.getDataRoutes(callback, cb));
   }
 
-  getDataRoute(...args) {
-    return promiseFromCallback(cb => super.getDataRoute(...args, cb));
+  getDataRoute(id) {
+    return promiseFromCallback(cb => super.getDataRoute(id, cb));
   }
 
-  getDataRouteFields(...args) {
-    return promiseFromCallback(cb => super.getDataRouteFields(...args, cb));
+  getDataRouteFields(id) {
+    return promiseFromCallback(cb => super.getDataRouteFields(id, cb));
   }
 
-  getDataRouteRules(...args) {
-    return promiseFromCallback(cb => super.getDataRouteRules(...args, cb));
+  getDataRouteRules(id) {
+    return promiseFromCallback(cb => super.getDataRouteRules(id, cb));
   }
 
-  mergeDataRoute(...args) {
-    return promiseFromCallback(cb => super.mergeDataRoute(...args, cb));
+  mergeDataRoute(id, key, data, isTestMode, downloadFile) {
+    return promiseFromCallback(cb => super.mergeDataRoute(id, key, data, isTestMode, downloadFile, cb));
   }
 
-  createDataRoute(...args) {
-    return promiseFromCallback(cb => super.createDataRoute(...args, cb));
+  createDataRoute(data) {
+    return promiseFromCallback(cb => super.createDataRoute(data, cb));
   }
 
-  updateDataRoute(...args) {
-    return promiseFromCallback(cb => super.updateDataRoute(...args, cb));
+  updateDataRoute(id, data) {
+    return promiseFromCallback(cb => super.updateDataRoute(id, data, cb));
   }
 
-  deleteDataRoute(...args) {
-    return promiseFromCallback(cb => super.deleteDataRoute(...args, cb));
+  deleteDataRoute(id) {
+    return promiseFromCallback(cb => super.deleteDataRoute(id, cb));
   }
 }
 
