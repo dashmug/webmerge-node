@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: index.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: index.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * WebMerge module.
  * @module webmerge
  */
@@ -14,6 +42,16 @@ const MERGE_ENDPOINT = '/merge'
 const ROUTE_ENDPOINT = '/route'
 const TOOLS_ENDPOINT = '/tools'
 
+/**
+ * Utility function to convert callbacks to Promise
+ * @param fn - Node-style callback
+ */
+const promiseFromCallback = fn => new Promise((resolve, reject) => {
+  fn((err, response) => {
+    if (err) return reject(err)
+    return resolve(response)
+  })
+})
 
 /**
  * API client with a callback API
@@ -368,7 +406,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {string} options.folder - Folder name
    */
   getDocuments(options) {
-    return this.promisify(cb => super.getDocuments(options, cb))
+    return promiseFromCallback(cb => super.getDocuments(options, cb))
   }
 
   /**
@@ -376,7 +414,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {number} id - Document ID
    */
   getDocument(id) {
-    return this.promisify(cb => super.getDocument(id, cb))
+    return promiseFromCallback(cb => super.getDocument(id, cb))
   }
 
   /**
@@ -384,7 +422,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param id - Document ID
    */
   getDocumentFields(id) {
-    return this.promisify(cb => super.getDocumentFields(id, cb))
+    return promiseFromCallback(cb => super.getDocumentFields(id, cb))
   }
 
   /**
@@ -392,7 +430,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param id - Document ID
    */
   getDocumentFiles(id) {
-    return this.promisify(cb => super.getDocumentFiles(id, cb))
+    return promiseFromCallback(cb => super.getDocumentFiles(id, cb))
   }
 
   /**
@@ -401,7 +439,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {Object} data - See {@link https://www.webmerge.me/developers/documents}
    */
   createDocument(data) {
-    return this.promisify(cb => super.createDocument(data, cb))
+    return promiseFromCallback(cb => super.createDocument(data, cb))
   }
 
   /**
@@ -412,7 +450,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param data
    */
   updateDocument(id, data) {
-    return this.promisify(cb => super.updateDocument(id, data, cb))
+    return promiseFromCallback(cb => super.updateDocument(id, data, cb))
   }
 
   /**
@@ -424,7 +462,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {boolean} downloadFile - Return the merged document in response
    */
   mergeDocument(id, key, data, isTestMode, downloadFile) {
-    return this.promisify(cb => super.mergeDocument(id, key, data, isTestMode, downloadFile, cb))
+    return promiseFromCallback(cb => super.mergeDocument(id, key, data, isTestMode, downloadFile, cb))
   }
 
   /**
@@ -434,7 +472,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {string} data.name - Name of the new document
    */
   copyDocument(id, data) {
-    return this.promisify(cb => super.copyDocument(id, data, cb))
+    return promiseFromCallback(cb => super.copyDocument(id, data, cb))
   }
 
   /**
@@ -442,7 +480,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {number} id - Document ID
    */
   deleteDocument(id) {
-    return this.promisify(cb => super.deleteDocument(id, cb))
+    return promiseFromCallback(cb => super.deleteDocument(id, cb))
   }
 
   /**
@@ -450,7 +488,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param callback
    */
   getDataRoutes(callback) {
-    return this.promisify(cb => super.getDataRoutes(callback, cb))
+    return promiseFromCallback(cb => super.getDataRoutes(callback, cb))
   }
 
   /**
@@ -458,7 +496,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {number} id - Data Route ID
    */
   getDataRoute(id) {
-    return this.promisify(cb => super.getDataRoute(id, cb))
+    return promiseFromCallback(cb => super.getDataRoute(id, cb))
   }
 
   /**
@@ -467,7 +505,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {number} id - Data Route ID
    */
   getDataRouteFields(id) {
-    return this.promisify(cb => super.getDataRouteFields(id, cb))
+    return promiseFromCallback(cb => super.getDataRouteFields(id, cb))
   }
 
   /**
@@ -475,7 +513,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {number} id - Data Route ID
    */
   getDataRouteRules(id) {
-    return this.promisify(cb => super.getDataRouteRules(id, cb))
+    return promiseFromCallback(cb => super.getDataRouteRules(id, cb))
   }
 
   /**
@@ -487,7 +525,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {boolean} downloadFile - Return the merged document in response
    */
   mergeDataRoute(id, key, data, isTestMode, downloadFile) {
-    return this.promisify(cb => super.mergeDataRoute(id, key, data, isTestMode, downloadFile, cb))
+    return promiseFromCallback(cb => super.mergeDataRoute(id, key, data, isTestMode, downloadFile, cb))
   }
 
   /**
@@ -495,7 +533,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {Object} data - https://www.webmerge.me/developers/routes
    */
   createDataRoute(data) {
-    return this.promisify(cb => super.createDataRoute(data, cb))
+    return promiseFromCallback(cb => super.createDataRoute(data, cb))
   }
 
   /**
@@ -504,7 +542,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {Object} data
    */
   updateDataRoute(id, data) {
-    return this.promisify(cb => super.updateDataRoute(id, data, cb))
+    return promiseFromCallback(cb => super.updateDataRoute(id, data, cb))
   }
 
   /**
@@ -512,7 +550,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {number} id - Data Route ID
    */
   deleteDataRoute(id) {
-    return this.promisify(cb => super.deleteDataRoute(id, cb))
+    return promiseFromCallback(cb => super.deleteDataRoute(id, cb))
   }
 
   /**
@@ -520,7 +558,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {Object} data - See {@link https://www.webmerge.me/developers/tools}
    */
   combineFiles(data) {
-    return this.promisify(cb => super.combineFiles(data, cb))
+    return promiseFromCallback(cb => super.combineFiles(data, cb))
   }
 
   /**
@@ -532,21 +570,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {string} data.file.contents - Base64-encoded file (required if 'url' is empty)
    */
   convertToPDF(data) {
-    return this.promisify(cb => super.convertToPDF(data, cb))
-  }
-
-  /**
-   * Utility function to promisify callbacks
-   * @param fn
-   * @returns {Promise}
-   */
-  promisify(fn) {
-    return new this.Promise((resolve, reject) => {
-      fn((err, response) => {
-        if (err) return reject(err)
-        return resolve(response)
-      })
-    })
+    return promiseFromCallback(cb => super.convertToPDF(data, cb))
   }
 }
 
@@ -558,3 +582,26 @@ module.exports.WebMergeAPI = WebMergeAPI
  * API client with a Promise API
  */
 module.exports.WebMergePromiseAPI = WebMergePromiseAPI
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-webmerge.html">webmerge</a></li></ul><h3>Classes</h3><ul><li><a href="module-webmerge-WebMergeAPI.html">WebMergeAPI</a></li><li><a href="module-webmerge-WebMergePromiseAPI.html">WebMergePromiseAPI</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun May 21 2017 06:59:41 GMT+1000 (AEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -29,10 +29,10 @@ Documentation (auto-generated from JSDoc)
 https://dashmug.github.io/webmerge-node/index.html (work-in-progress)
 
 
-Usage
------
+Usage Examples
+--------------
 
-Callback version
+### Callback version
 ```js
 const WebMergeAPI = require('webmerge').WebMergeAPI
 
@@ -42,7 +42,10 @@ const api = new WebMergeAPI(API_KEY, SECRET)
 api.getDocument(123456, (error, result) => console.log(result))
 ```
 
-Promise version
+### Promise version
+
+Using native Promise,
+
 ```js
 const WebMergePromiseAPI = require('webmerge').WebMergePromiseAPI
 
@@ -52,6 +55,17 @@ const api = new WebMergePromiseAPI(API_KEY, SECRET)
 api.getDocument(123456).then(console.log)
 ```
 
+Using [Bluebird](http://bluebirdjs.com/docs/getting-started.html),
+
+```js
+const Promise = require('bluebird')
+const WebMergePromiseAPI = require('webmerge').WebMergePromiseAPI
+
+const api = new WebMergePromiseAPI(API_KEY, SECRET, Promise)
+
+// Retrieve a specific document
+api.getDocument(123456).then(console.log)
+```
 
 List of methods
 ---------------

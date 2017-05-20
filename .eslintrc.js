@@ -22,7 +22,6 @@ module.exports = {
   ],
   rules: {
     'max-len': ['error', 120],
-    'no-useless-constructor': 'off',
     'semi': ['error', 'never'],
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',
