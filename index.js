@@ -93,7 +93,7 @@ class WebMergeAPI {
   }
 
   /**
-   * Retrieve the file that was uploaded for a specific document (pdf, docx, xlsx, or pptx)
+   * Retrieve the file that was uploaded for a specific document (pdf, docx, xlsx, or pptx).
    * @param {number} id - Document ID
    * @param callback
    */
@@ -181,7 +181,7 @@ class WebMergeAPI {
   }
 
   /**
-   * Delete a document
+   * Delete a document.
    * @param {number} id - Document ID
    * @param callback
    */
@@ -208,7 +208,7 @@ class WebMergeAPI {
   }
 
   /**
-   * Retrieve a specific data route
+   * Retrieve a specific data route.
    * @param {number} id - Data Route ID
    * @param callback
    */
@@ -334,7 +334,7 @@ class WebMergeAPI {
   }
 
   /**
-   * Convert file to PDF
+   * Convert file to PDF.
    * @param {Object} data
    * @param {Object} data.file
    * @param {string} data.file.name - File Name
@@ -355,7 +355,7 @@ class WebMergeAPI {
 
 
 /**
- * API client with a promise API
+ * API client with a Promise API
  * @extends WebMergeAPI
  */
 class WebMergePromiseAPI extends WebMergeAPI {
@@ -396,7 +396,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
   }
 
   /**
-   * Retrieve the file that was uploaded for a specific document (pdf, docx, xlsx, or pptx)
+   * Retrieve the file that was uploaded for a specific document (pdf, docx, xlsx, or pptx).
    * @param id - Document ID
    */
   getDocumentFiles(id) {
@@ -446,7 +446,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
   }
 
   /**
-   * Delete a document
+   * Delete a document.
    * @param {number} id - Document ID
    */
   deleteDocument(id) {
@@ -462,7 +462,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
   }
 
   /**
-   * Retrieve a specific data route
+   * Retrieve a specific data route.
    * @param {number} id - Data Route ID
    */
   getDataRoute(id) {
@@ -549,6 +549,6 @@ class WebMergePromiseAPI extends WebMergeAPI {
  */
 module.exports.WebMergeAPI = WebMergeAPI
 /**
- * API client with a promise API
+ * API client with a Promise API
  */
 module.exports.WebMergePromiseAPI = WebMergePromiseAPI
