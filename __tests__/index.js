@@ -1,9 +1,7 @@
 'use strict'
 
-jest.mock('request')
-
 const request = require('request')
-const WebMergePromiseAPI = require('.').WebMergePromiseAPI
+const WebMergePromiseAPI = require('..').WebMergePromiseAPI
 
 
 describe('WebMergePromiseAPI', () => {
