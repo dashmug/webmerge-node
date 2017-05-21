@@ -52,6 +52,17 @@ describe('WebMergePromiseAPI', () => {
     })
   })
 
+  describe('getDocumentFiles()', () => {
+    it('retrieves the file for a single document', () => {
+      const api = new WebMergePromiseAPI('key', 'secret')
+
+      return api.getDocumentFiles(1)
+        .then(() => {
+          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/api/documents/1/file' })
+        })
+    })
+  })
+
   describe('createDocument()', () => {
     it('creates a new document', () => {
       const api = new WebMergePromiseAPI('key', 'secret')
@@ -135,6 +146,116 @@ describe('WebMergePromiseAPI', () => {
       return api.getDataRoute(1)
         .then(() => {
           expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/route/1' })
+        })
+    })
+  })
+
+  describe('getDataRouteFields()', () => {
+    it('retrieves fields from a single data route', () => {
+      const api = new WebMergePromiseAPI('key', 'secret')
+
+      return api.getDataRouteFields(1)
+        .then(() => {
+          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/route/1/fields' })
+        })
+    })
+  })
+
+  describe('getDataRouteRules()', () => {
+    it('retrieves rules from a single data route', () => {
+      const api = new WebMergePromiseAPI('key', 'secret')
+
+      return api.getDataRouteRules(1)
+        .then(() => {
+          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/route/1/rules' })
+        })
+    })
+  })
+
+  describe('createDataRoute()', () => {
+    it('creates a new data route', () => {
+      const api = new WebMergePromiseAPI('key', 'secret')
+
+      return api.createDataRoute({ name: 'dummy route', rules: [{ document_id: 123456 }] })
+        .then(() => {
+          expect(api.client.post.mock.calls[0][0]).toEqual({
+            url: '/route',
+            body: { name: 'dummy route', rules: [{ document_id: 123456 }] },
+          })
+        })
+    })
+  })
+
+  describe('updateDataRoute()', () => {
+    it('updates an existing data route', () => {
+      const api = new WebMergePromiseAPI('key', 'secret')
+
+      return api.updateDataRoute(1, {})
+        .then(() => {
+          expect(api.client.put.mock.calls[0][0]).toEqual({ url: '/route/1', body: {} })
+        })
+    })
+  })
+
+  describe('mergeDataRoute()', () => {
+    it('merges an existing data route', () => {
+      const api = new WebMergePromiseAPI('key', 'secret')
+
+      return api.mergeDataRoute(1, 'key', {}, false, false)
+        .then(() => {
+          expect(api.client.post.mock.calls[0][0]).toEqual({
+            url: '/route/1/key',
+            qs: { test: 0, download: 0 },
+            body: {},
+          })
+        })
+    })
+  })
+
+  describe('deleteDataRoute()', () => {
+    it('deletes an existing data route', () => {
+      const api = new WebMergePromiseAPI('key', 'secret')
+
+      return api.deleteDataRoute(1)
+        .then(() => {
+          expect(api.client.delete.mock.calls[0][0]).toEqual({ url: '/route/1' })
+        })
+    })
+  })
+
+  describe('combineFiles()', () => {
+    it('combines files into PDFs', () => {
+      const api = new WebMergePromiseAPI('key', 'secret')
+
+      return api.combineFiles({ output: 'pdf', files: [{ name: 'hello.pdf', url: 'https://example.com/hello.pdf' }] })
+        .then(() => {
+          expect(api.client.post.mock.calls[0][0]).toEqual({
+            body: {
+              files: [{
+                name: 'hello.pdf',
+                url: 'https://example.com/hello.pdf',
+              }],
+              output: 'pdf',
+            },
+            url: '/tools/combine',
+          })
+        })
+    })
+  })
+
+  describe('convertToPDF()', () => {
+    it('converts a file into a PDF', () => {
+      const api = new WebMergePromiseAPI('key', 'secret')
+
+      return api.convertToPDF({ name: 'hello.pdf', url: 'https://example.com/hello.pdf' })
+        .then(() => {
+          expect(api.client.post.mock.calls[0][0]).toEqual({
+            body: {
+              name: 'hello.pdf',
+              url: 'https://example.com/hello.pdf',
+            },
+            url: '/tools/convert_to_pdf',
+          })
         })
     })
   })
