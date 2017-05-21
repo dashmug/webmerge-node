@@ -39,7 +39,7 @@ class WebMergeAPI {
 
   /**
    * Retrieve a list of documents.
-   * @param {Object|null} options
+   * @param {Object} options
    * @param {string} options.search - Search term
    * @param {string} options.folder - Folder name
    * @param callback
@@ -363,7 +363,7 @@ class WebMergePromiseAPI extends WebMergeAPI {
 
   /**
    * Retrieve a list of documents.
-   * @param {Object|null} options
+   * @param {Object} options
    * @param {string} options.search - Search term
    * @param {string} options.folder - Folder name
    */
