@@ -1,6 +1,5 @@
 [![npm version](https://badge.fury.io/js/webmerge.svg)](https://badge.fury.io/js/webmerge)
 [![Build Status](https://travis-ci.org/dashmug/webmerge-node.svg?branch=master)](https://travis-ci.org/dashmug/webmerge-node) 
-[![Coverage Status](https://coveralls.io/repos/github/dashmug/webmerge-node/badge.svg?branch=master)](https://coveralls.io/github/dashmug/webmerge-node?branch=master)
 [![dependencies Status](https://david-dm.org/dashmug/webmerge-node/status.svg)](https://david-dm.org/dashmug/webmerge-node)
 [![devDependencies Status](https://david-dm.org/dashmug/webmerge-node/dev-status.svg)](https://david-dm.org/dashmug/webmerge-node?type=dev)
 
