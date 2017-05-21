@@ -25,9 +25,10 @@ describe('WebMergePromiseAPI', () => {
     it('retrieves a list of documents', () => {
       const api = new WebMergePromiseAPI('key', 'secret')
 
-      api.getDocuments(null).then(() => {
-        expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/api/documents' })
-      })
+      return api.getDocuments({})
+        .then(() => {
+          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/api/documents', qs: {} })
+        })
     })
   })
 
@@ -35,9 +36,10 @@ describe('WebMergePromiseAPI', () => {
     it('retrieves a single document', () => {
       const api = new WebMergePromiseAPI('key', 'secret')
 
-      api.getDocument(1).then(() => {
-        expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/api/documents/1' })
-      })
+      return api.getDocument(1)
+        .then(() => {
+          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/api/documents/1' })
+        })
     })
   })
 
@@ -45,9 +47,10 @@ describe('WebMergePromiseAPI', () => {
     it('retrieves document fields for a single document', () => {
       const api = new WebMergePromiseAPI('key', 'secret')
 
-      api.getDocumentFields(1).then(() => {
-        expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/api/documents/1/fields' })
-      })
+      return api.getDocumentFields(1)
+        .then(() => {
+          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/api/documents/1/fields' })
+        })
     })
   })
 
@@ -55,9 +58,13 @@ describe('WebMergePromiseAPI', () => {
     it('creates a new document', () => {
       const api = new WebMergePromiseAPI('key', 'secret')
 
-      api.createDocument({}).then(() => {
-        expect(api.client.post).toBeCalled()
-      })
+      return api.createDocument({ name: 'dummy', type: 'pdf' })
+        .then(() => {
+          expect(api.client.post.mock.calls[0][0]).toEqual({
+            url: '/api/documents',
+            body: { name: 'dummy', type: 'pdf' },
+          })
+        })
     })
   })
 
@@ -65,9 +72,10 @@ describe('WebMergePromiseAPI', () => {
     it('updates an existing document', () => {
       const api = new WebMergePromiseAPI('key', 'secret')
 
-      api.updateDocument(1, {}).then(() => {
-        expect(api.client.put).toBeCalled()
-      })
+      return api.updateDocument(1, {})
+        .then(() => {
+          expect(api.client.put.mock.calls[0][0]).toEqual({ url: '/api/documents/1', body: {} })
+        })
     })
   })
 
@@ -75,9 +83,61 @@ describe('WebMergePromiseAPI', () => {
     it('merges an existing document', () => {
       const api = new WebMergePromiseAPI('key', 'secret')
 
-      api.mergeDocument(1, 'key', {}, true, true).then(() => {
-        expect(api.client.post).toBeCalled()
-      })
+      return api.mergeDocument(1, 'key', {}, true, true)
+        .then(() => {
+          expect(api.client.post.mock.calls[0][0]).toEqual({
+            url: '/merge/1/key',
+            qs: { test: 1, download: 1 },
+            body: {},
+          })
+        })
+    })
+  })
+
+  describe('copyDocument()', () => {
+    it('copies an existing document', () => {
+      const api = new WebMergePromiseAPI('key', 'secret')
+
+      return api.copyDocument(1, { name: 'new copy' })
+        .then(() => {
+          expect(api.client.post.mock.calls[0][0]).toEqual({
+            url: '/api/documents/1/copy',
+            body: { name: 'new copy' },
+          })
+        })
+    })
+  })
+
+  describe('deleteDocument()', () => {
+    it('deletes an existing document', () => {
+      const api = new WebMergePromiseAPI('key', 'secret')
+
+      return api.deleteDocument(1)
+        .then(() => {
+          expect(api.client.delete.mock.calls[0][0]).toEqual({ url: '/api/documents/1' })
+        })
+    })
+  })
+
+  describe('getDataRoutes()', () => {
+    it('retrieves a list of data routes', () => {
+      const api = new WebMergePromiseAPI('key', 'secret')
+
+      return api.getDataRoutes()
+        .then(() => {
+          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/route' })
+        })
+    })
+  })
+
+  describe('getDataRoute()', () => {
+    it('retrieves a single data route', () => {
+      const api = new WebMergePromiseAPI('key', 'secret')
+
+      return api.getDataRoute(1)
+        .then(() => {
+          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/route/1' })
+        })
     })
   })
 })

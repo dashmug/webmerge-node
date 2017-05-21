@@ -447,10 +447,9 @@ class WebMergePromiseAPI extends WebMergeAPI {
 
   /**
    * Retrieve a list of data routes.
-   * @param callback
    */
-  getDataRoutes(callback) {
-    return this.promisify(cb => super.getDataRoutes(callback, cb))
+  getDataRoutes() {
+    return this.promisify(cb => super.getDataRoutes(cb))
   }
 
   /**
