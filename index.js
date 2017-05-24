@@ -40,8 +40,8 @@ class WebMergeAPI {
   /**
    * Retrieve a list of documents.
    * @param {Object} options
-   * @param {string} options.search - Search term
-   * @param {string} options.folder - Folder name
+   * @param {string} [options.search] - Search term
+   * @param {string} [options.folder] - Folder name
    * @param callback
    */
   getDocuments(options, callback) {
@@ -100,6 +100,22 @@ class WebMergeAPI {
    * Create a new document.
    * Depending on the type of document you are creating, different parameters are required
    * @param {Object} data - See {@link https://www.webmerge.me/developers/documents}
+   * @param {string} data.name - Document name
+   * @param {string} data.type - The type of document
+   * @param {string} data.output - The type of document to produce from merge
+   * @param {string} [data.output_name] - A customized filename for the merged document
+   * @param {string} [data.folder] - The name of the folder to save the document in.
+   * @param {string} [data.html] - The HTML of the document (required if data.type == 'html')
+   * @param {number} [data.size_width] - The width of the document (required if data.type == 'html')
+   * @param {number} [data.size_height] - The height of the document (required if data.type == 'html')
+   * @param {string} [data.file_contents] - The height of the document (required if data.type != 'html')
+   * @param {Object} [data.notification] - The default email notification
+   * @param {string} [data.notification.to]
+   * @param {string} [data.notification.from]
+   * @param {string} [data.notification.subject]
+   * @param {string} [data.notification.html]
+   * @param {string} [data.notification.security]
+   * @param {string} [data.notification.password]
    * @param callback
    */
   createDocument(data, callback) {
@@ -527,8 +543,8 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {string} data.output - The type of file to produce
    * @param {Object[]} data.files - The files to be combined
    * @param {string} data.files[].name - File Name
-   * @param {string} data.files[].url - Remote File URL (required if 'contents' is empty)
-   * @param {string} data.files[].contents - Base64-encoded file (required if 'url' is empty)
+   * @param {string} [data.files[].url] - Remote File URL (required if 'contents' is empty)
+   * @param {string} [data.files[].contents] - Base64-encoded file (required if 'url' is empty)
    */
   combineFiles(data) {
     return this.promisify(cb => super.combineFiles(data, cb))
@@ -539,8 +555,8 @@ class WebMergePromiseAPI extends WebMergeAPI {
    * @param {Object} data
    * @param {Object} data.file
    * @param {string} data.file.name - File Name
-   * @param {string} data.file.url - Remote File URL (required if 'contents' is empty)
-   * @param {string} data.file.contents - Base64-encoded file (required if 'url' is empty)
+   * @param {string} [data.file.url] - Remote File URL (required if 'contents' is empty)
+   * @param {string} [data.file.contents] - Base64-encoded file (required if 'url' is empty)
    */
   convertToPDF(data) {
     return this.promisify(cb => super.convertToPDF(data, cb))
