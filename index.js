@@ -16,7 +16,9 @@ const TOOLS_ENDPOINT = '/tools'
 
 
 const done = callback => (err, response, body) => {
-  if (err) return callback(err)
+  if (err) throw err
+  if ('error' in body) throw new Error(body.error)
+
   return callback(null, body)
 }
 
