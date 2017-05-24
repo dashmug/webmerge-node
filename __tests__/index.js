@@ -247,13 +247,10 @@ describe('WebMergePromiseAPI', () => {
     it('converts a file into a PDF', () => {
       const api = new WebMergePromiseAPI('key', 'secret')
 
-      return api.convertToPDF({ name: 'hello.pdf', url: 'https://example.com/hello.pdf' })
+      return api.convertToPDF({ file: { name: 'hello.pdf', url: 'https://example.com/hello.pdf' } })
         .then(() => {
           expect(api.client.post.mock.calls[0][0]).toEqual({
-            body: {
-              name: 'hello.pdf',
-              url: 'https://example.com/hello.pdf',
-            },
+            body: { file: { name: 'hello.pdf', url: 'https://example.com/hello.pdf' } },
             url: '/tools/convert_to_pdf',
           })
         })
