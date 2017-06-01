@@ -7,13 +7,17 @@
 WebMerge 
 ========
 
-NodeJS library for using [WebMerge API](https://www.webmerge.me/developers).
+NodeJS wrapper library for using [WebMerge API](https://www.webmerge.me/developers).
 
 
 Install
 -------
 
     $ npm install webmerge --save
+    
+or with `yarn`...
+
+    $ yarn add webmerge
 
 
 Authentication
@@ -75,6 +79,12 @@ See [documentation](https://dashmug.github.io/webmerge-node/index.html) for more
 #### `new WebMergeAPI(key, secret)`
 
 Create an API client that uses callbacks.
+
+#### `new WebMergeAPI(key, secret, [PromiseImplementation])`
+
+Create an API client that uses Promises. 
+Optionally, you may specify which Promise implementation to use (e.g. bluebird).
+Defaults to using Native Promises.
 
 
 ### Documents
