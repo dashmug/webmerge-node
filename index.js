@@ -11,7 +11,8 @@ const request = require('request')
 const WEB_MERGE_BASE_URL = 'https://www.webmerge.me'
 const API_ENDPOINT = '/api/documents'
 const MERGE_ENDPOINT = '/merge'
-const ROUTE_ENDPOINT = '/route'
+const MERGE_ROUTE_ENDPOINT = '/route'
+const ROUTE_ENDPOINT = 'api/routes'
 const TOOLS_ENDPOINT = '/tools'
 
 
