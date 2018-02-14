@@ -237,7 +237,7 @@ class WebMergeAPI {
    */
   mergeDataRoute(id, key, data, isTestMode, downloadFile, callback) {
     return this.client.post({
-      url: `${ROUTE_ENDPOINT}/${id}/${key}`,
+      url: `${MERGE_ROUTE_ENDPOINT}/${id}/${key}`,
       qs: {
         test: isTestMode ? 1 : 0,
         download: downloadFile ? 1 : 0,
