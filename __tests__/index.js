@@ -1,6 +1,7 @@
 'use strict'
 
 const request = require('request')
+// eslint-disable-next-line prefer-destructuring
 const WebMergePromiseAPI = require('..').WebMergePromiseAPI
 
 

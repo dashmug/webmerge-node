@@ -28,7 +28,6 @@ const done = callback => (err, response, body) => {
  * API client with a callback API
  */
 class WebMergeAPI {
-
   /**
    * Create an API client that uses callbacks.
    * @param {string} key - API key
@@ -323,7 +322,6 @@ class WebMergeAPI {
  * @extends WebMergeAPI
  */
 class WebMergePromiseAPI extends WebMergeAPI {
-
   /**
    * Create an API client that uses Promises.
    * @param {string} key - API key

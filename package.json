@@ -18,23 +18,23 @@
     "index.js"
   ],
   "dependencies": {
-    "request": "^2.81.0"
+    "request": "2.83.0"
   },
   "devDependencies": {
-    "coveralls": "^2.13.1",
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-jest": "^20.0.3",
-    "jest": "^20.0.4",
-    "jsdoc": "^3.4.3"
+    "coveralls": "3.0.0",
+    "eslint": "4.17.0",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-jest": "21.12.1",
+    "jest": "22.3.0",
+    "jsdoc": "3.5.5"
   },
   "scripts": {
     "coveralls": "npm run test && cat ./coverage/lcov.info | coveralls",
     "docs": "jsdoc --destination docs --package package.json --readme README.md index.js",
     "lint": "eslint .",
     "precommit": "npm run lint && npm run test",
-    "test": "jest --coverage"
+    "test": "jest --coverage --ci --verbose"
   },
   "jest": {
     "coverageReporters": [
