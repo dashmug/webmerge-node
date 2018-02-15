@@ -11,7 +11,8 @@ const request = require('request')
 const WEB_MERGE_BASE_URL = 'https://www.webmerge.me'
 const API_ENDPOINT = '/api/documents'
 const MERGE_ENDPOINT = '/merge'
-const ROUTE_ENDPOINT = '/route'
+const MERGE_ROUTE_ENDPOINT = '/route'
+const ROUTE_ENDPOINT = '/api/routes'
 const TOOLS_ENDPOINT = '/tools'
 
 
@@ -236,7 +237,7 @@ class WebMergeAPI {
    */
   mergeDataRoute(id, key, data, isTestMode, downloadFile, callback) {
     return this.client.post({
-      url: `${ROUTE_ENDPOINT}/${id}/${key}`,
+      url: `${MERGE_ROUTE_ENDPOINT}/${id}/${key}`,
       qs: {
         test: isTestMode ? 1 : 0,
         download: downloadFile ? 1 : 0,

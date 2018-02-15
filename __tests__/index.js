@@ -134,7 +134,7 @@ describe('WebMergePromiseAPI', () => {
 
       return api.getDataRoutes()
         .then(() => {
-          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/route' })
+          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/api/routes' })
         })
     })
   })
@@ -145,7 +145,7 @@ describe('WebMergePromiseAPI', () => {
 
       return api.getDataRoute(1)
         .then(() => {
-          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/route/1' })
+          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/api/routes/1' })
         })
     })
   })
@@ -156,7 +156,7 @@ describe('WebMergePromiseAPI', () => {
 
       return api.getDataRouteFields(1)
         .then(() => {
-          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/route/1/fields' })
+          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/api/routes/1/fields' })
         })
     })
   })
@@ -167,7 +167,7 @@ describe('WebMergePromiseAPI', () => {
 
       return api.getDataRouteRules(1)
         .then(() => {
-          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/route/1/rules' })
+          expect(api.client.get.mock.calls[0][0]).toEqual({ url: '/api/routes/1/rules' })
         })
     })
   })
@@ -179,7 +179,7 @@ describe('WebMergePromiseAPI', () => {
       return api.createDataRoute({ name: 'dummy route', rules: [{ document_id: 123456 }] })
         .then(() => {
           expect(api.client.post.mock.calls[0][0]).toEqual({
-            url: '/route',
+            url: '/api/routes',
             body: { name: 'dummy route', rules: [{ document_id: 123456 }] },
           })
         })
@@ -192,7 +192,7 @@ describe('WebMergePromiseAPI', () => {
 
       return api.updateDataRoute(1, {})
         .then(() => {
-          expect(api.client.put.mock.calls[0][0]).toEqual({ url: '/route/1', body: {} })
+          expect(api.client.put.mock.calls[0][0]).toEqual({ url: '/api/routes/1', body: {} })
         })
     })
   })
@@ -218,7 +218,7 @@ describe('WebMergePromiseAPI', () => {
 
       return api.deleteDataRoute(1)
         .then(() => {
-          expect(api.client.delete.mock.calls[0][0]).toEqual({ url: '/route/1' })
+          expect(api.client.delete.mock.calls[0][0]).toEqual({ url: '/api/routes/1' })
         })
     })
   })
