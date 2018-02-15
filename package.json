@@ -37,6 +37,7 @@
     "test": "jest --coverage --ci --verbose"
   },
   "jest": {
+    "testEnvironment": "node",
     "coverageReporters": [
       "text",
       "html",
